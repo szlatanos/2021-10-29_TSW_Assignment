@@ -19,98 +19,73 @@
 \maketitle
 
 \section{Question 1: Monte Carlo}
-\paragraph{$AR(1)$ model}
-\begin{enumerate}
-    \item 
-    \begin{enumerate}
-        \item Mean \\ \textit{Considering different samples}
-        
-        \par
-        \textit{Considering different autoregressive parameters}
-        
-         \par
-        \textit{Considering different autoregressive parameters}
-        
-        \item Variance \\ \textit{Considering different samples}
-        
-        \par
-        \textit{Considering different autoregressive parameters}
-        
-         \par
-        \textit{Considering different autoregressive parameters}
-        
-        \item $AR$ coefficients \\ \textit{Considering different samples}
-        
-        \par
-        \textit{Considering different autoregressive parameters}
-        
-         \par
-        \textit{Considering different autoregressive parameters}
-        
-    \end{enumerate}
-\end{enumerate}
+\subsection{$AR(1)$ model}
+\paragraph{Mean}
+An increase in the size of the sample for the simulated $AR(1)$ model increases the kyrtosis of the estimated distribution, which alters from negative ($N=50$) to positive ($N=1000$)(Figure ~\ref{fig:MC_AR1_densities_diff_smpl}). Similarly, when altering the autoregressive parameter ($p$) in the simulation of an ARIMA model, the kyrtosis changes from negative - for negative values of parameter $p$ - to positive - for positive $p$'s. When the value of $p$ is around zero, the estimated distribution has kyrtosis similar to the normal distribution. 
+\par
+On the other hand, an increase in the number of replications ($R$), simply makes the estimated distribution smoother, compared to the case of small number of replications (Figure ~\ref{fig:MC_AR1_densities_diff_norepl}). The overall characteristics of the curve do not change significantly with a change in the number of replications.
 
 
-\paragraph{$MA(1)$ model}
-\begin{enumerate}
-    \item 
-    \begin{enumerate}
-        \item Mean \\ \textit{Considering different samples}
-        
-        \par
-        \textit{Considering different autoregressive parameters}
-        
-         \par
-        \textit{Considering different autoregressive parameters}
-        
-        \item Variance \\ \textit{Considering different samples}
-        
-        \par
-        \textit{Considering different autoregressive parameters}
-        
-         \par
-        \textit{Considering different autoregressive parameters}
-        
-        \item $AR$ coefficients \\ \textit{Considering different samples}
-        
-        \par
-        \textit{Considering different autoregressive parameters}
-        
-         \par
-        \textit{Considering different autoregressive parameters}
-        
-    \end{enumerate}
-\end{enumerate}
+\paragraph{Variance}
+A small sample size (e.g. $N=50$) is associated to an estimated distribution for the variance with positive skewness. An increase in the sample size, leads to a more symmetric distribution while the kyrtosis becomes more positive too.(Figure ~\ref{fig:MC_AR1_densities_diff_smpl}). Moreover, similar to the case of the mean described above, an increase in the number of replications in the MC simulation, leads to a smoother variance distribution. The overall characteristics of the estimated distribution remain unchanged across the different number of replications.
+\par
+A change in the autoregressive parameter $p$, in absolute terms, leads to a shift in the estimated densities. At the same time, large values of $p$ are associated with negative kyrtosis.
 
 
-\section{Question 2: Block Bootstrap}
+\paragraph{AR coefficient}
+The AR coefficient $\phi$ changes in a similar way to the mean and the variance, across different sample sizes. One the other hand, changing the autoregressive parameter $p$, leads to an obvious shift in the estimated distribution. Furthermore, a large parameter (in absolute terms) is associated with a more positive kyrtosis.
+
+
+\subsection{$MA(1)$ model}
+The estimated distributions of the mean, the variance and the MA coefficient varies across different sample sizes in an almost identical way, compared to the simulated $AR(1)$ model. Similarly to the $AR(1)$ case, when increasing the number of replications, the estimated densities become smoother without any significant changes in the other characteristics of the distribution.
+\par
+Changing the sample size in the $MA(1)$ model, does not create different estimated distributions compared to the case of the $AR(1)$ model described above. However, when using an $MA(1)$ model and at the same time altering the autoregressive parameter ($q$), the kyrtosis of the estimated distributions becomes much more positive compared to the $AR(1)$ model Figures ~\ref{fig:MC_AR1_densities_diff_ARq} and ~\ref{fig:MC_MA1_densities_diff_ARq}).
+
+% \section{Question 2: Moving Block Bootstrap}
+% \subsection{$AR(1)$ model}
+% \paragraph{Mean}
+% When applying Moving Block Bootstrap to estimate the distribution of the mean of an $AR(1)$ model, while increasing the sample size of the series, 
+
+% \paragraph{Variance}
+
+% \paragraph{AR coefficient}
+
+% \subsection{$MA(1)$ model}
+
+
+
 \section{Question 3: Sparse Regression and Factor Analysis}
+
+\subsection{Factor loadings}
+Assuming that nothing is wrong with the data and there is not a break in the mean, then we can say that loadings abruptly change after the crisis to adapt to the new economic conditions.
+For the workshop, this is fine. For your thesis, you need to check that there are no breaks in any of your series.
 
 
 \clearpage
 \appendix
+\section{Codes}
+Replication files for the figures below are available on \href{https://github.com/szlatanos/2021-10-29_TSW_Assignment}{\textbf{this}} Github repo.
+
 \section{Figures}
 %%%%%%%%%%%%%%%%%%%%%%
-\subsection{Monte Carlo}
-\subsubsection{$AR(1)$ models}
 \begin{figure}[hbt!]
 \includegraphics[width=\textwidth]{plots/MC_AR1_densities_diff_smpl}
-\label{fig:MC_AR1_densities_diff_smpl}
 \caption{MC simulation for an $AR(1)$ model: changing the sample size}
+\label{fig:MC_AR1_densities_diff_smpl}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[width=\textwidth]{plots/MC_AR1_densities_diff_ARq}
-\label{fig:MC_AR1_densities_diff_ARq}
 \caption{MC simulation for an $AR(1)$ model: changing the autoregressive parameter}
+\label{fig:MC_AR1_densities_diff_ARq}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[width=\textwidth]{plots/MC_AR1_densities_diff_norepl}
-\label{fig:MC_AR1_densities_diff_norepl}
 \caption{MC simulation for an $AR(1)$ model: changing the number of replications}
+\label{fig:MC_AR1_densities_diff_norepl}
 \centering
 \end{figure}
 
@@ -119,22 +94,22 @@
 \subsubsection{$MA(1)$ models}
 \begin{figure}[hbt!]
 \includegraphics[width=\textwidth]{plots/MC_MA1_densities_diff_smpl}
-\label{fig:MC_MA1_densities_diff_smpl}
 \caption{MC simulation for an $MA(1)$ model: changing the sample size}
+\label{fig:MC_MA1_densities_diff_smpl}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[width=\textwidth]{plots/MC_MA1_densities_diff_ARq}
-\label{fig:MC_MA1_densities_diff_ARq}
 \caption{MC simulation for an $MA(1)$ model: changing the autoregressive parameter}
+\label{fig:MC_MA1_densities_diff_ARq}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[width=\textwidth]{plots/MC_MA1_densities_diff_norepl}
-\label{fig:MC_MA1_densities_diff_norepl}
 \caption{MC simulation for an $MA(1)$ model: changing the number of replications}
+\label{fig:MC_MA1_densities_diff_norepl}
 \centering
 \end{figure}
 
@@ -142,113 +117,108 @@
 
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%
-\subsection{Moving Block Bootstrap}
-\subsubsection{$AR(1)$ models}
+
 \begin{figure}[hbt!]
 \includegraphics[width=\textwidth]{plots/MBB_AR1_densities_diff_smpl}
-\label{fig:MBB_AR1_densities_diff_smpl}
 \caption{MBB for an $AR(1)$ model: changing the sample size}
+\label{fig:MBB_AR1_densities_diff_smpl}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[width=\textwidth]{plots/MBB_AR1_densities_diff_ARq}
-\label{fig:MBB_AR1_densities_diff_ARq}
 \caption{MBB for an $AR(1)$ model: changing the autoregressive parameter}
+\label{fig:MBB_AR1_densities_diff_ARq}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[width=\textwidth]{plots/MBB_AR1_densities_diff_drawsB}
-\label{fig:MBB_AR1_densities_diff_drawsB}
 \caption{MBB for an $AR(1)$ model: changing the number of draws}
+\label{fig:MBB_AR1_densities_diff_drawsB}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[width=\textwidth]{plots/MBB_AR1_densities_diff_blocklength}
-\label{fig:MBB_AR1_densities_diff_blocklength}
 \caption{MBB for an $AR(1)$ model: changing the block length}
+\label{fig:MBB_AR1_densities_diff_blocklength}
 \centering
 \end{figure}
 
 
 \clearpage
-\subsubsection{$MA(1)$ models}
+%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[hbt!]
 \includegraphics[width=\textwidth]{plots/MBB_AR1_densities_diff_smpl}
-\label{fig:MBB_MA1_densities_diff_smpl}
 \caption{MBB for an $MA(1)$ model: changing the sample size}
-\centering
+\label{fig:MBB_MA1_densities_diff_smpl}
+centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[width=\textwidth]{plots/MBB_MA1_densities_diff_ARq}
-\label{fig:MBB_MA1_densities_diff_ARq}
 \caption{MBB for an $MA(1)$ model: changing the autoregressive parameter}
+\label{fig:MBB_MA1_densities_diff_ARq}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[width=\textwidth]{plots/MBB_MA1_densities_diff_drawsB}
-\label{fig:MBB_MA1_densities_diff_drawsB}
 \caption{MBB for an $MA(1)$ model: changing the number of draws}
+\label{fig:MBB_MA1_densities_diff_drawsB}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[width=\textwidth]{plots/MBB_MA1_densities_diff_blocklength}
-\label{fig:MBB_MA1_densities_diff_blocklength}
 \caption{MBB for an $MA(1)$ model: changing the block length}
+\label{fig:MBB_MA1_densities_diff_blocklength}
 \centering
 \end{figure}
 
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%
-\subsection{Sparse Regression and Factor Analysis}
-
-\subsubsection{Ridge}
-
 \begin{subfigures}
 \begin{figure}[hbt!]
 \includegraphics[page = 1, width=\textwidth]{plots/ridge_betas}
-\label{fig:ridge_betas}
 \caption{\label{first}Ridge regression: The evolution of the estimated $\beta$ coefficients over time}
+\label{fig:ridge_betas}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 2, width=\textwidth]{plots/ridge_betas}
-\label{fig:ridge_betas}
 \caption{\label{second}Ridge regression: The evolution of the estimated $\beta$ coefficients over time}
+\label{fig:ridge_betas}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 3, width=\textwidth]{plots/ridge_betas}
-\label{fig:ridge_betas}
 \caption{\label{third}Ridge regression: The evolution of the estimated $\beta$ coefficients over time}
+\label{fig:ridge_betas}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 4, width=\textwidth]{plots/ridge_betas}
-\label{fig:ridge_betas}
 \caption{\label{fourth}Ridge regression: The evolution of the estimated $\beta$ coefficients over time}
+\label{fig:ridge_betas}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 5, width=\textwidth]{plots/ridge_betas}
-\label{fig:ridge_betas}
 \caption{\label{fifth}Ridge regression: The evolution of the estimated $\beta$ coefficients over time}
+\label{fig:ridge_betas}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 6, width=\textwidth]{plots/ridge_betas}
-\label{fig:ridge_betas}
 \caption{\label{sixth}Ridge regression: The evolution of the estimated $\beta$ coefficients over time}
+\label{fig:ridge_betas}
 \centering
 \end{figure}
 
@@ -261,8 +231,8 @@
 
 \begin{figure}[hbt!]
 \includegraphics[page = 8, width=\textwidth]{plots/ridge_betas}
-\label{fig:ridge_betas}
 \caption{\label{eighth}Ridge regression: The evolution of the estimated $\beta$ coefficients over time}
+\label{fig:ridge_betas}
 \centering
 \end{figure}
 
@@ -275,22 +245,22 @@
 
 \begin{figure}[hbt!]
 \includegraphics[page = 10, width=\textwidth]{plots/ridge_betas}
-\label{fig:ridge_betas}
 \caption{\label{tenth}Ridge regression: The evolution of the estimated $\beta$ coefficients over time}
+\label{fig:ridge_betas}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 11, width=\textwidth]{plots/ridge_betas}
-\label{fig:ridge_betas}
 \caption{\label{eleventh}Ridge regression: The evolution of the estimated $\beta$ coefficients over time}
+\label{fig:ridge_betas}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 12, width=\textwidth]{plots/ridge_betas}
-\label{fig:ridge_betas}
 \caption{\label{twelveth}Ridge regression: The evolution of the estimated $\beta$ coefficients over time}
+\label{fig:ridge_betas}
 \centering
 \end{figure}
 
@@ -307,48 +277,47 @@
 
 
 \clearpage
-\subsubsection{Lasso}
-
+%%%%%%%%%%%%%%%%%%%%%%
 \begin{subfigures}
 \begin{figure}[hbt!]
 \includegraphics[page = 1, width=\textwidth]{plots/lasso_betas}
-\label{fig:lasso_betas}
 \caption{\label{first}Lasso regression: The evolution of the estimated $\beta$ coefficients over time}
+\label{fig:lasso_betas}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 2, width=\textwidth]{plots/lasso_betas}
-\label{fig:lasso_betas}
 \caption{\label{second}Lasso regression: The evolution of the estimated $\beta$ coefficients over time}
+\label{fig:lasso_betas}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 3, width=\textwidth]{plots/lasso_betas}
-\label{fig:lasso_betas}
 \caption{\label{third}Lasso regression: The evolution of the estimated $\beta$ coefficients over time}
+\label{fig:lasso_betas}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 4, width=\textwidth]{plots/lasso_betas}
-\label{fig:lasso_betas}
 \caption{\label{fourth}Lasso regression: The evolution of the estimated $\beta$ coefficients over time}
+\label{fig:lasso_betas}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 5, width=\textwidth]{plots/lasso_betas}
-\label{fig:lasso_betas}
 \caption{\label{fifth}Lasso regression: The evolution of the estimated $\beta$ coefficients over time}
+\label{fig:lasso_betas}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 6, width=\textwidth]{plots/lasso_betas}
-\label{fig:lasso_betas}
 \caption{\label{sixth}Lasso regression: The evolution of the estimated $\beta$ coefficients over time}
+\label{fig:lasso_betas}
 \centering
 \end{figure}
 
@@ -361,8 +330,8 @@
 
 \begin{figure}[hbt!]
 \includegraphics[page = 8, width=\textwidth]{plots/lasso_betas}
-\label{fig:lasso_betas}
 \caption{\label{eighth}Lasso regression: The evolution of the estimated $\beta$ coefficients over time}
+\label{fig:lasso_betas}
 \centering
 \end{figure}
 
@@ -375,8 +344,8 @@
 
 \begin{figure}[hbt!]
 \includegraphics[page = 10, width=\textwidth]{plots/lasso_betas}
-\label{fig:lasso_betas}
 \caption{\label{tenth}Lasso regression: The evolution of the estimated $\beta$ coefficients over time}
+\label{fig:lasso_betas}
 \centering
 \end{figure}
 
@@ -389,8 +358,8 @@
 
 \begin{figure}[hbt!]
 \includegraphics[page = 12, width=\textwidth]{plots/lasso_betas}
-\label{fig:lasso_betas}
 \caption{\label{twelveth}Lasso regression: The evolution of the estimated $\beta$ coefficients over time}
+\label{fig:lasso_betas}
 \centering
 \end{figure}
 
@@ -404,28 +373,26 @@
 \end{subfigures}
 
 \clearpage
-
-\subsubsection{PCA}
-
+%%%%%%%%%%%%%%%%%%%%%%
 \begin{subfigures}
 \begin{figure}[hbt!]
 \includegraphics[page = 1, width=\textwidth]{plots/pca_loads}
-\label{fig:pca_loads}
 \caption{\label{first}PCA: The evolution of the loading factors over time}
+\label{fig:pca_loads}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 2, width=\textwidth]{plots/pca_loads}
-\label{fig:pca_loads}
 \caption{\label{second}PCA: The evolution of the loading factors over time}
+\label{fig:pca_loads}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 3, width=\textwidth]{plots/pca_loads}
-\label{fig:pca_loads}
 \caption{\label{third}PCA: The evolution of the loading factors over time}
+\label{fig:pca_loads}
 \centering
 \end{figure}
 
@@ -438,15 +405,15 @@
 
 \begin{figure}[hbt!]
 \includegraphics[page = 5, width=\textwidth]{plots/pca_loads}
-\label{fig:pca_loads}
 \caption{\label{fifth}PCA: The evolution of the loading factors over time}
+\label{fig:pca_loads}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 6, width=\textwidth]{plots/pca_loads}
-\label{fig:pca_loads}
 \caption{\label{sixth}PCA: The evolution of the loading factors over time}
+\label{fig:pca_loads}
 \centering
 \end{figure}
 
@@ -459,8 +426,8 @@
 
 \begin{figure}[hbt!]
 \includegraphics[page = 8, width=\textwidth]{plots/pca_loads}
-\label{fig:pca_loads}
 \caption{\label{eighth}PCA: The evolution of the loading factors over time}
+\label{fig:pca_loads}
 \centering
 \end{figure}
 
@@ -473,29 +440,29 @@
 
 \begin{figure}[hbt!]
 \includegraphics[page = 10, width=\textwidth]{plots/pca_loads}
-\label{fig:pca_loads}
 \caption{\label{tenth}PCA: The evolution of the loading factors over time}
+\label{fig:pca_loads}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 11, width=\textwidth]{plots/pca_loads}
-\label{fig:pca_loads}
 \caption{\label{eleventh}PCA: The evolution of the loading factors over time}
+\label{fig:pca_loads}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 12, width=\textwidth]{plots/pca_loads}
-\label{fig:pca_loads}
 \caption{\label{twelveth}PCA: The evolution of the loading factors over time}
+\label{fig:pca_loads}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 13, width=\textwidth]{plots/pca_loads}
-\label{fig:pca_loads}
 \caption{\label{thirteenth}PCA: The evolution of the loading factors over time}
+\label{fig:pca_loads}
 \centering
 \end{figure}
 
@@ -504,107 +471,99 @@
 \clearpage
 
 \clearpage
-\subsubsection{PLS}
-
+%%%%%%%%%%%%%%%%%%%%%%
 \begin{subfigures}
 \begin{figure}[hbt!]
 \includegraphics[page = 1, width=\textwidth]{plots/pls_loads}
-\label{fig:pls_loads}
 \caption{\label{first}PLS: The evolution of the loading factors over time}
+\label{fig:pls_loads}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 2, width=\textwidth]{plots/pls_loads}
-\label{fig:pls_loads}
 \caption{\label{second}PLS: The evolution of the loading factors over time}
+\label{fig:pls_loads}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 3, width=\textwidth]{plots/pls_loads}
-\label{fig:pls_loads}
 \caption{\label{third}PLS: The evolution of the loading factors over time}
+\label{fig:pls_loads}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 4, width=\textwidth]{plots/pls_loads}
-\label{fig:pls_loads}
 \caption{\label{fourth}PLS: The evolution of the loading factors over time}
+\label{fig:pls_loads}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 5, width=\textwidth]{plots/pls_loads}
-\label{fig:pls_loads}
 \caption{\label{fifth}PLS: The evolution of the loading factors over time}
+\label{fig:pls_loads}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 6, width=\textwidth]{plots/pls_loads}
-\label{fig:pls_loads}
 \caption{\label{sixth}PLS: The evolution of the loading factors over time}
+\label{fig:pls_loads}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 7, width=\textwidth]{plots/pls_loads}
-\label{fig:pls_loads}
 \caption{\label{seventh}PLS: The evolution of the loading factors over time}
+\label{fig:pls_loads}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 8, width=\textwidth]{plots/pls_loads}
-\label{fig:pls_loads}
 \caption{\label{eighth}PLS: The evolution of the loading factors over time}
+\label{fig:pls_loads}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 9, width=\textwidth]{plots/pls_loads}
-\label{fig:pls_loads}
 \caption{\label{ninth}PLS: The evolution of the loading factors over time}
+\label{fig:pls_loads}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 10, width=\textwidth]{plots/pls_loads}
-\label{fig:pls_loads}
 \caption{\label{tenth}PLS: The evolution of the loading factors over time}
+\label{fig:pls_loads}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 11, width=\textwidth]{plots/pls_loads}
-\label{fig:pls_loads}
 \caption{\label{eleventh}PLS: The evolution of the loading factors over time}
+\label{fig:pls_loads}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 12, width=\textwidth]{plots/pls_loads}
-\label{fig:pls_loads}
 \caption{\label{twelveth}PLS: The evolution of the loading factors over time}
+\label{fig:pls_loads}
 \centering
 \end{figure}
 
 \begin{figure}[hbt!]
 \includegraphics[page = 13, width=\textwidth]{plots/pls_loads}
-\label{fig:pls_loads}
 \caption{\label{thirteenth}PLS: The evolution of the loading factors over time}
+\label{fig:pls_loads}
 \centering
 \end{figure}
 
 \end{subfigures}
-
-\clearpage
-
-\clearpage
-
-
-
 
 \end{document}
