@@ -47,18 +47,30 @@ Changing the sample size in the $MA(1)$ model, does not create different estimat
 % When applying Moving Block Bootstrap to estimate the distribution of the mean of an $AR(1)$ model, while increasing the sample size of the series, 
 
 % \paragraph{Variance}
-
 % \paragraph{AR coefficient}
-
 % \subsection{$MA(1)$ model}
 
+% Assuming that nothing is wrong with the data and there is not a break in the mean, then we can say that loadings abruptly change after the crisis to adapt to the new economic conditions.
+% For the workshop, this is fine. For your thesis, you need to check that there are no breaks in any of your series.
 
 
 \section{Question 3: Sparse Regression and Factor Analysis}
+\subsection{Data description}
+For this exercise, I am using the FRED-QD database, which is a large macroeconomic database for the US economy in quarterly frequency. The sample size starts in 1980Q1 and ends in 2019Q4.
 
-\subsection{Factor loadings}
-Assuming that nothing is wrong with the data and there is not a break in the mean, then we can say that loadings abruptly change after the crisis to adapt to the new economic conditions.
-For the workshop, this is fine. For your thesis, you need to check that there are no breaks in any of your series.
+
+\subsection{Stationarity}
+All of the series were tested for stationarity using an Augmented Dickey-Fuller test. Thereafter, they were transformed following McCracken and Ng (2016). Figures \ref{fig:transformed_series_1} to \ref{fig:transformed_series_17} show the transformed series of the dataset.
+\par
+Although the recommended transformations aim to eliminate nonstationarity in the series, after conducting a second ADF test on the transformed series suggested that some of them are nonstationary and therefore might follow an $I(2)$ process. I did not investigate further into this and thus I have dropped these particular series from the dataset.
+
+\subsection{Ridge and Lasso}
+The beta coefficients of the ridge and lasso regressions change in various ways during the past 20 years. There are variables for which the coefficients deteriorates over time, while there are other variables whose estimated coefficient increases over time. Figures \ref{fig:ridge_betas}a to \ref{fig:ridge_betas}m and \ref{fig:lasso_betas}a to \ref{fig:lasso_betas}m show the evolution of the coefficients for each regression respectively. At the same time, there is a number of series whose coefficient remains equal to zero for the whole or for some of 20-year period.
+
+\par One common feature among many series is the presence of a structural shift in the level of the coefficients. By examining the underlying transformed series of the dataset one could observe the presence of structural breaks in these series which could be attributed to the GFC for specific type of breaks. A further investigation should be conducted, which is beyond the scope of this exercise.
+
+\subsection{PCA and PLS}
+Figures \ref{fig:pca_loads}, \ref{fig:pls_loads} and their corresponding panels show the evolution of the loading factors for each method. Similarly to the estimated coefficients of the ridge regression, there is a strong presence of structural breaks in the factor loadings which is again attributed to the GFC. If the shift in the level of the factor loadings is not considered, it can be concluded that for most of the variables, the factor loadings remain in general constant with some exceptions.  
 
 
 \clearpage
@@ -177,6 +189,133 @@ centering
 \centering
 \end{figure}
 
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%
+\begin{subfigures}
+\begin{figure}[hbt!]
+\includegraphics[page = 1, width=\textwidth]{plots/transformed_series}
+\caption{\label{first}FRED-QD transformed series}
+\label{fig:transformed_series_1}
+\centering
+\end{figure}
+
+\begin{figure}[hbt!]
+\includegraphics[page = 2, width=\textwidth]{plots/transformed_series}
+\caption{\label{second}FRED-QD transformed series}
+\label{fig:transformed_series_2}
+\centering
+\end{figure}
+
+\begin{figure}[hbt!]
+\includegraphics[page = 3, width=\textwidth]{plots/transformed_series}
+\caption{\label{third}FRED-QD transformed series}
+\label{fig:transformed_series_3}
+\centering
+\end{figure}
+
+\begin{figure}[hbt!]
+\includegraphics[page = 4, width=\textwidth]{plots/transformed_series}
+\caption{\label{fourth}FRED-QD transformed series}
+\label{fig:transformed_series_4}
+\centering
+\end{figure}
+
+\begin{figure}[hbt!]
+\includegraphics[page = 5, width=\textwidth]{plots/transformed_series}
+\caption{\label{fifth}FRED-QD transformed series}
+\label{fig:transformed_series_5}
+\centering
+\end{figure}
+
+\begin{figure}[hbt!]
+\includegraphics[page = 6, width=\textwidth]{plots/transformed_series}
+\caption{\label{sixth}FRED-QD transformed series}
+\label{fig:transformed_series_6}
+\centering
+\end{figure}
+
+\begin{figure}[hbt!]
+\includegraphics[page = 7, width=\textwidth]{plots/transformed_series}
+\label{fig:transformed_series_7}
+\caption{\label{seventh}FRED-QD transformed series}
+\centering
+\end{figure}
+
+\begin{figure}[hbt!]
+\includegraphics[page = 8, width=\textwidth]{plots/transformed_series}
+\caption{\label{eighth}FRED-QD transformed series}
+\label{fig:transformed_series_8}
+\centering
+\end{figure}
+
+\begin{figure}[hbt!]
+\includegraphics[page = 9, width=\textwidth]{plots/transformed_series}
+\label{fig:transformed_series_9}
+\caption{\label{ninth}FRED-QD transformed series}
+\centering
+\end{figure}
+
+\begin{figure}[hbt!]
+\includegraphics[page = 10, width=\textwidth]{plots/transformed_series}
+\caption{\label{tenth}FRED-QD transformed series}
+\label{fig:transformed_series_10}
+\centering
+\end{figure}
+
+\begin{figure}[hbt!]
+\includegraphics[page = 11, width=\textwidth]{plots/transformed_series}
+\caption{\label{eleventh}FRED-QD transformed series}
+\label{fig:transformed_series_11}
+\centering
+\end{figure}
+
+\begin{figure}[hbt!]
+\includegraphics[page = 12, width=\textwidth]{plots/transformed_series}
+\caption{\label{twelfth}FRED-QD transformed series}
+\label{fig:transformed_series_12}
+\centering
+\end{figure}
+   
+\begin{figure}[hbt!]
+\includegraphics[page = 13, width=\textwidth]{plots/transformed_series}
+\label{fig:transformed_series_13}
+\caption{\label{thirteenth}FRED-QD transformed series}
+\centering
+\end{figure}
+
+\begin{figure}[hbt!]
+\includegraphics[page = 14, width=\textwidth]{plots/transformed_series}
+\label{fig:transformed_series_14}
+\caption{\label{fourteenth}FRED-QD transformed series}
+\centering
+\end{figure}
+
+\begin{figure}[hbt!]
+\includegraphics[page = 15, width=\textwidth]{plots/transformed_series}
+\label{fig:transformed_series_15}
+\caption{\label{fifteenth}FRED-QD transformed series}
+\centering
+\end{figure}
+
+\begin{figure}[hbt!]
+\includegraphics[page = 16, width=\textwidth]{plots/transformed_series}
+\label{fig:transformed_series_16}
+\caption{\label{sixteenth}FRED-QD transformed series}
+\centering
+\end{figure}
+
+\begin{figure}[hbt!]
+\includegraphics[page = 17, width=\textwidth]{plots/transformed_series}
+\label{fig:transformed_series_17}
+\caption{\label{seventeenth}FRED-QD transformed series}
+\centering
+\end{figure}
+
+
+\end{subfigures}
+
+
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%
 \begin{subfigures}
@@ -259,7 +398,7 @@ centering
 
 \begin{figure}[hbt!]
 \includegraphics[page = 12, width=\textwidth]{plots/ridge_betas}
-\caption{\label{twelveth}Ridge regression: The evolution of the estimated $\beta$ coefficients over time}
+\caption{\label{twelfth}Ridge regression: The evolution of the estimated $\beta$ coefficients over time}
 \label{fig:ridge_betas}
 \centering
 \end{figure}
@@ -358,7 +497,7 @@ centering
 
 \begin{figure}[hbt!]
 \includegraphics[page = 12, width=\textwidth]{plots/lasso_betas}
-\caption{\label{twelveth}Lasso regression: The evolution of the estimated $\beta$ coefficients over time}
+\caption{\label{twelfth}Lasso regression: The evolution of the estimated $\beta$ coefficients over time}
 \label{fig:lasso_betas}
 \centering
 \end{figure}
@@ -454,7 +593,7 @@ centering
 
 \begin{figure}[hbt!]
 \includegraphics[page = 12, width=\textwidth]{plots/pca_loads}
-\caption{\label{twelveth}PCA: The evolution of the loading factors over time}
+\caption{\label{twelfth}PCA: The evolution of the loading factors over time}
 \label{fig:pca_loads}
 \centering
 \end{figure}
@@ -552,7 +691,7 @@ centering
 
 \begin{figure}[hbt!]
 \includegraphics[page = 12, width=\textwidth]{plots/pls_loads}
-\caption{\label{twelveth}PLS: The evolution of the loading factors over time}
+\caption{\label{twelfth}PLS: The evolution of the loading factors over time}
 \label{fig:pls_loads}
 \centering
 \end{figure}
