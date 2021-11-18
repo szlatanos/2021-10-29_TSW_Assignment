@@ -1,19 +1,14 @@
 #Set up ----
-# Always start from scratch
+# Clear environment
 rm(list=ls())
 
-# Set the working directory
-# * Under windows replace \ with either / or \\
-setwd("~/Documents/Academia/PhD/Courses/2021_Timeseries_Econometrics/R-codes-modified")
-
-## load necessary libraries
+## Load necessary libraries
 library("tseries")
 library("blocklength")
 library("lmtest")
-library("forecast")
 library("tictoc")
 
-# load a custom-made MBB function
+# Load a custom-made MBB function
 source("functions/MovingBlockBoostrap.R")
 
 #time it
@@ -1634,3 +1629,11 @@ dev.off()
 quantile(boot_est[,1], probs=c(2.5/100, 97.5/100))
 quantile(boot_est[,2], probs=c(2.5/100, 97.5/100))
 quantile(boot_est[,3], probs=c(2.5/100, 97.5/100))
+
+# Running time
+toc(log = TRUE)
+log.lst <- tic.log(format = FALSE)
+timings <- unlist(lapply(log.lst, function(x) x$toc - x$tic))
+total_time <- sum(timings)/60
+cat("Simulations finished after", round(total_time, 1), "minutes", "\n")
+tic.clearlog()

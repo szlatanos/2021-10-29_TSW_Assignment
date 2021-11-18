@@ -1,15 +1,9 @@
 #Set up ----
-## Always start from scratch
+# Clear environment
 rm(list=ls())
 
-## Set the working directory
-### * Under windows replace \ with either / or \\
-setwd("~/Documents/Academia/PhD/Courses/2021_Timeseries_Econometrics/R-codes-modified")
-
-## load necessary libraries
-library("tseries")
+# load necessary libraries
 library("lmtest")
-library("forecast")
 library("tictoc")
 
 # Simulated LR model ----
@@ -1390,3 +1384,5 @@ toc(log = TRUE)
 log.lst <- tic.log(format = FALSE)
 timings <- unlist(lapply(log.lst, function(x) x$toc - x$tic))
 total_time <- sum(timings)/60
+cat("Simulations finished after", round(total_time, 1), "minutes", "\n")
+tic.clearlog()

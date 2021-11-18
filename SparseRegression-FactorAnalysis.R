@@ -1,10 +1,6 @@
 #Set up ----
-# Always start from scratch
+# Clear environment
 rm(list=ls())
-
-# Set the working directory
-# * Under windows replace \ with either / or \\
-setwd("~/Documents/Academia/PhD/Courses/2021_Timeseries_Econometrics/R-codes-modified")
 
 # Load necessary libraries
 library("tidyverse")
@@ -16,18 +12,11 @@ library("tseries")
 library("fredr")
 library("glmnet")
 library("pls")
-library("leaps")
-library("fbi")
 library("changepoint")
+library("fbi")
 
 # Load custom functions
 source("functions/insample-functions.R")
-
-
-# Set up API key for FRED
-# for more info visit: https://fred.stlouisfed.org/docs/api/api_key.html
-fredr_set_key("8827769c8326184123f517e87cc9a920")
-
 
 # Data ----
 # Long format
